@@ -27,6 +27,7 @@ jobs:
             npm install
             npm install -g .
             cd -
+            npm config set loglevel silly
 
       - name: Publish
         run: npm publish
