@@ -21,11 +21,12 @@ jobs:
 
       - name: Install npm from npm/oidc branch
         run: |
-          git clone --single-branch --branch oidc https://github.com/npm/cli.git
-          cd cli
-          npm install
-          npm install -g .
-          cd ..
+            TMP_DIR=$(mktemp -d)
+            git clone --single-branch --branch oidc https://github.com/npm/cli.git "$TMP_DIR/cli"
+            cd "$TMP_DIR/cli"
+            npm install
+            npm install -g .
+            cd -
 
       - name: Publish
         run: npm publish
