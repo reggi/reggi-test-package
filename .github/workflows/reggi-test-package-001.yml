@@ -2,8 +2,11 @@ name: reggi-test-package-001
 
 on:
   push:
-    branches: [main]
-
+    paths:
+      - 'reggi/oidc/sandbox/reggi-test-package-001/**'
+  # Also allow manual triggering from the GitHub UI
+  workflow_dispatch:
+    
 permissions:
   id-token: write
   contents: read
@@ -16,13 +19,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Set Up Node.js Environment
         uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
       - name: Install npm from npm/oidc branch
         run: |
             TMP_DIR=$(mktemp -d)
-            git clone --single-branch --branch oidc https://github.com/npm/cli.git "$TMP_DIR/cli"
+            git clone --depth 1 --single-branch --branch oidc https://github.com/npm/cli.git "$TMP_DIR/cli"
             cd "$TMP_DIR/cli"
             npm install
             npm install -g .
@@ -30,4 +35,5 @@ jobs:
             npm config set loglevel silly
 
       - name: Publish
+        working-directory: ${{ github.event.inputs.package_name == '' && 'reggi/oidc/sandbox/reggi-test-package-001' || format('reggi/oidc/sandbox/{0}', github.event.inputs.package_name) }}
         run: npm publish
