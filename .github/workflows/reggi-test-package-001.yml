@@ -32,5 +32,4 @@ jobs:
             npm config set loglevel silly
 
       - name: Publish
-        working-directory: ${{ github.event.inputs.package_name == '' && 'reggi/oidc/sandbox/reggi-test-package-001' || format('reggi/oidc/sandbox/{0}', github.event.inputs.package_name) }}
         run: npm publish
