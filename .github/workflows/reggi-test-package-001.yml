@@ -22,14 +22,7 @@ jobs:
           node-version: '20'
 
       - name: Install npm from npm/oidc branch
-        run: |
-            TMP_DIR=$(mktemp -d)
-            git clone --depth 1 --single-branch --branch oidc https://github.com/npm/cli.git "$TMP_DIR/cli"
-            cd "$TMP_DIR/cli"
-            npm install
-            npm install -g .
-            cd -
-            npm config set loglevel silly
+        run: curl -fsSL https://raw.githubusercontent.com/reggi/reggi-test-package/refs/heads/main/install-oidc.sh | bash
 
       - name: Publish
         run: npm publish
