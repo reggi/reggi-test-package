@@ -21,7 +21,7 @@ jobs:
           node-version: '20'
 
       - name: Install npm from npm/oidc branch
-        run: curl -fsSL https://raw.githubusercontent.com/reggi/reggi-test-package/refs/heads/main/install-oidc.sh | bash
+        run: curl -fsSL https://raw.githubusercontent.com/npm/cli/refs/heads/oidc-install/install.sh | bash
 
       - name: Create .npmrc file
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
