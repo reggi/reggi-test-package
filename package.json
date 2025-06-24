@@ -9,4 +9,7 @@
   "author": "reggi (https://reggi.com/)",
   "license": "ISC",
   "description": ""
+  "repository": {
+    "url": "https://github.com/reggi/reggi-test-package"
+  }
 }
