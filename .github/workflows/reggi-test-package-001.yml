@@ -2,6 +2,8 @@ name: reggi-test-package-001
 
 on:
   push:
+    paths-ignore:
+      - '.github/workflows/**'
   workflow_dispatch:
     
 permissions:
