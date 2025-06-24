@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install npm from npm/oidc branch
+      # - name: Install npm from npm/oidc branch
         # run: curl -fsSL https://raw.githubusercontent.com/reggi/reggi-test-package/refs/heads/main/install-oidc.sh | bash
 
       - name: Publish
