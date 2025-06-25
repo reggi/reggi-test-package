@@ -29,4 +29,4 @@ jobs:
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
 
       - name: Publish
-        run: npm publish --provenance --tag=love
+        run: npm publish
