@@ -23,7 +23,10 @@ jobs:
           node-version: '20'
 
       - name: Install npm from npm/oidc branch
-        run: curl -fsSL https://raw.githubusercontent.com/npm/cli/refs/heads/oidc-install/install.sh | bash
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/npm/cli/refs/heads/oidc-install/install.sh | bash
+          echo "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
+          echo "$ACTIONS_ID_TOKEN_REQUEST_URL"
 
       # - name: Create .npmrc file
       #   run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
