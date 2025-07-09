@@ -24,9 +24,13 @@ jobs:
 
       - name: Install npm from npm/oidc branch
         run: |
-          curl -fsSL https://raw.githubusercontent.com/npm/cli/refs/heads/oidc-install/install.sh | bash
-          echo "$ACTIONS_ID_TOKEN_REQUEST_TOKEN"
-          echo "$ACTIONS_ID_TOKEN_REQUEST_URL"
+          TMP_DIR=$(mktemp -d)
+          git clone --depth 1 --single-branch --branch oidc-default-provenance https://github.com/npm/cli.git "$TMP_DIR/cli"
+          cd "$TMP_DIR/cli"
+          npm install
+          npm install -g .
+          cd -
+          npm config set loglevel silly
 
       # - name: Create .npmrc file
       #   run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
