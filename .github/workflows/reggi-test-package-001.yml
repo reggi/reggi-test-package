@@ -24,6 +24,7 @@ jobs:
 
       - name: Install npm from npm/oidc branch
         run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
           npm i npm@latest -g
           npm config set loglevel silly
           npm publish
