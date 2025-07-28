@@ -1,7 +1,6 @@
 {
-  "name": "reggi-test-package-001",
-  "private": true
-  "version": "9.3.0",
+  "name": "@npmcorp/very-private",
+  "version": "1.0.4",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
