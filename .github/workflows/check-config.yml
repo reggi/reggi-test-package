@@ -15,6 +15,6 @@ jobs:
       - name: Request GitHub ID token and exchange for npm
         shell: bash
         run: |
-          r=$(npm -s config get registry||:);r=${r%/};: ${r:=https://registry.npmjs.org};h=${r#*://};h=${h%%/*};i=$(curl -fsS -H"Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:${h}"|jq -er .value);curl -fsS -H"Authorization: Bearer $i" "$r/-/npm/v1/oidc/token/exchange/package/$(jq -r '.name|@uri' package.json)" -d''
+          r=$(npm -s config get registry||:);r=${r%/};: ${r:=https://registry.npmjs.org};h=${r#*://};h=${h%%/*};i=$(curl -fsS -H"Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm:${h}"|jq -er .value);curl -fsS -H"Authorization: Bearer $i" "$r/-/npm/v1/oidc/token/exchange/package/$(jq -r '.name|@uri' package.json)" -d ""
 
 
