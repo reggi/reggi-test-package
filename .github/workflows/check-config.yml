@@ -21,4 +21,5 @@ jobs:
           PKG_RAW=$(jq -r '.name' package.json)
           [ -n "${PKG_RAW:-}" ] && [ "$PKG_RAW" != "null" ] || { echo "Package name missing"; exit 1; }
           PKG=${PKG_RAW//@/%40}; PKG=${PKG//\//%2F}
+          echo "$PKG"
           curl -sSf -X POST -H "Authorization: Bearer $ID_TOKEN" "https://registry.npmjs.org/-/npm/v1/oidc/token/exchange/package/$PKG" -d '' >/dev/null
