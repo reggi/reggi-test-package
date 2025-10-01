@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install npm from npm/oidc branch
+      - name: Run OIDC script
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" > .npmrc
-          npm i npm@latest -g
-          npm config set loglevel silly
-          npm publish --dry-run
+          node ./.github/workflows/oidc.js https://registry.npmjs.org love-energetic-202
