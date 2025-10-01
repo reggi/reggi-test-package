@@ -66,4 +66,4 @@ async function oidc ({ packageName, registry }) {
   return response.token
 }
 
-oidc({ packageName, registry }).then(console.log)
+oidc({ packageName, registry }).then(token => console.log(token.slice(0, 10) + '...'))
