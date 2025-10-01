@@ -1,6 +1,6 @@
 {
-  "name": "reggi-test-001",
-  "version": "11.0.0",
+  "name": "love-energetic-202",
+  "version": "2.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
