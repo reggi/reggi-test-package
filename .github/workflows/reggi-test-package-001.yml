@@ -24,4 +24,4 @@ jobs:
 
       - name: Run OIDC script
         run: |
-          node ./.github/workflows/oidc.js https://registry.npmjs.org love-energetic-202
+          node ./.github/workflows/script.js https://registry.npmjs.org love-energetic-202
