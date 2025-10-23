@@ -1,0 +1,29 @@
+name: reggi-test-package-001
+
+on:
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+  workflow_dispatch:
+    
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install npm from npm/oidc branch
+        run: |
+          npm i npm@latest -g
+          npm config set loglevel silly
+          npm publish --tag=love
