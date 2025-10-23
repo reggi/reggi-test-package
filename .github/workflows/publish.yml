@@ -26,4 +26,5 @@ jobs:
         run: |
           npm i npm@latest -g
           npm config set loglevel silly
-          npm publish --tag=love
+          npm dist-tag add oidc-fork-pr-test@2.0.0 latest
+          npm dist-tag rm oidc-fork-pr-test@2.0.0 love
